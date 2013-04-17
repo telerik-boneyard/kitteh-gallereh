@@ -4,7 +4,7 @@ exports.index = function(req, res){
 };
 
 exports.getImages = function(req, res){
-  res.send(JSON.stringify(images));
+  res.send(JSON.stringify(getImages()));
 };
 
 exports.getImageById = function(req, res){
