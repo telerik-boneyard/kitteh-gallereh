@@ -15,6 +15,12 @@ ImageGallery.Controller = {
     this.layout.showIn("#main", addImageView);
   },
 
+  editImageById: function(id){
+    var image = this.imageSource.get(id);
+    var editImageView = ImageGallery.AddEdit.getEditImageView(image);
+    this.layout.showIn("#main", editImageView);
+  },
+
   showImageById: function(id){
     var image = this.imageSource.get(id);
     var showImageView = ImageGallery.ImageViewer.getImageView(image);
