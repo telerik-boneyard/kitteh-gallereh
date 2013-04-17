@@ -1,7 +1,18 @@
+var obj = kendo.observable({
+
+  selectedImageId: 0,
+
+});
+
 ImageGallery.Controller = {
 
   init: function(imageDataSource){
     this.imageSource = imageDataSource;
+
+    var that = this;
+    this.imageSource.bind("change", function(){
+      that.showImageById(obj.get("selectedImageId"));
+    });
 
     ImageGallery.ImageList.init(imageDataSource);
     ImageGallery.AddEdit.init(imageDataSource);
@@ -17,12 +28,16 @@ ImageGallery.Controller = {
 
   editImageById: function(id){
     var image = this.imageSource.get(id);
+    obj.set("selectedImageId", id);
+    obj.set("selectecImage", image);
     var editImageView = ImageGallery.AddEdit.getEditImageView(image);
     this.layout.showIn("#main", editImageView);
   },
 
   showImageById: function(id){
     var image = this.imageSource.get(id);
+    obj.set("selectedImageId", id);
+    obj.set("selectecImage", image);
     var showImageView = ImageGallery.ImageViewer.getImageView(image);
     this.layout.showIn("#main", showImageView);
   },
