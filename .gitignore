@@ -1,0 +1,6 @@
+*.swp
+*.swo
+*.sw0
+*.orig
+.DS_Store
+node_modules
