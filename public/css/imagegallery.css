@@ -17,6 +17,9 @@ ul.nav {
 
 .image-list-container{
   background-image: url("/img/flowerWrap.png");
+}
+
+.scrollable {
   overflow: scroll;
 }
 

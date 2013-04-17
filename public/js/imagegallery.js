@@ -1,17 +1,16 @@
 var ImageGallery = {
 
-  init: function(imageData){
-    var imageDataSource = this.configDataSource(imageData);
+  init: function(){
+    var imageDataSource = this.configDataSource();
     imageDataSource.read();
 
     ImageGallery.Controller.init(imageDataSource);
     ImageGallery.Router.start();
   },
 
-  configDataSource: function(imageData){
+  configDataSource: function(){
 
     return new kendo.data.DataSource({
-      data: imageData,
       schema: {
         model: {
           id: "id",

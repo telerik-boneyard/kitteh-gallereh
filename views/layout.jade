@@ -19,11 +19,13 @@ html
     script(src='/js/imageviewer.js')
 
     script#image-listview-template(type="text/x-kendo-template")
-      div(data-role="listview", data-bind="source: imageSource", data-template="image-preview-template")
+      .scrollable(data-bind="style: {width: scrollingSize}")
+        div(data-role="listview", data-bind="source: imageSource", data-template="image-preview-template")
 
     script#image-preview-template(type='text/x-kendo-template')
-      a(href='##', data-bind="click: imageClicked, attr: {data-id: id}")
-        img(src!='#= url #', width='150', height='100', alt!='#= name #: #= description #')
+      li
+        a(href='##', data-bind="click: imageClicked, attr: {data-id: id}")
+          img(src!='#= url #', width='150', height='100', alt!='#= name #: #= description #')
 
     script#image-view-template(type='text/x-kendo-template')
       .image-view
@@ -116,11 +118,8 @@ html
 
     script
       $(function(){
-        // server side image pre-loading
-        var imageData = !{JSON.stringify(images)}
-
-        // init the app w/ the data from the server
-        ImageGallery.init(imageData);
+        // init the app
+        ImageGallery.init();
       });
 
   body
