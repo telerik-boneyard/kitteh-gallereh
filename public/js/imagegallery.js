@@ -1,7 +1,6 @@
-var ImageGallery = (function(){
-  var App = {};
+var ImageGallery = {
 
-  App.init = function(imageData){
+  init: function(imageData){
     var imageDataSource = new kendo.data.DataSource({
       data: imageData
     });
@@ -9,7 +8,6 @@ var ImageGallery = (function(){
     imageDataSource.read();
     ImageGallery.Controller.init(imageDataSource);
     ImageGallery.Router.start();
-  };
+  }
 
-  return App;
-})();
+};
