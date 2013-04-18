@@ -1,55 +1,73 @@
-var obj = kendo.observable({
+ImageGallery.Controller = (function(){
 
-  selectedImageId: 0,
+  var galleryLayout = kendo.observable({
+    selectedImageId: 0,
 
-});
+    show: function(){
+      this.layout = new kendo.Layout("gallery-layout-template");
+      this.layout.render("body")
+    },
 
-ImageGallery.Controller = {
+    showContent: function(view){
+      this.layout.showIn("#main", view);
+    },
 
-  init: function(imageDataSource){
-    this.imageSource = imageDataSource;
+    showList: function(view){
+      this.layout.showIn("#image-list", view);
+    }
 
-    var that = this;
-    this.imageSource.bind("change", function(){
-      that.showImageById(obj.get("selectedImageId"));
-    });
+  });
 
-    ImageGallery.ImageList.init(imageDataSource);
-    ImageGallery.AddEdit.init(imageDataSource);
+  var Controller = {
 
-    this.showLayout();
-    this.showImageList();
-  },
+    init: function(imageDataSource){
+      this.imageSource = imageDataSource;
 
-  addImage: function(){
-    var addImageView = ImageGallery.AddEdit.getAddImageView();
-    this.layout.showIn("#main", addImageView);
-  },
+      var that = this;
+      this.imageSource.bind("change", function(){
+        that.showImageById(galleryLayout.get("selectedImageId"));
+      });
 
-  editImageById: function(id){
-    var image = this.imageSource.get(id);
-    obj.set("selectedImageId", id);
-    obj.set("selectecImage", image);
-    var editImageView = ImageGallery.AddEdit.getEditImageView(image);
-    this.layout.showIn("#main", editImageView);
-  },
+      ImageGallery.ImageList.init(imageDataSource);
+      ImageGallery.AddEdit.init(imageDataSource);
 
-  showImageById: function(id){
-    var image = this.imageSource.get(id);
-    obj.set("selectedImageId", id);
-    obj.set("selectecImage", image);
-    var showImageView = ImageGallery.ImageViewer.getImageView(image);
-    this.layout.showIn("#main", showImageView);
-  },
+      galleryLayout.show();
+      this.showImageList();
+    },
 
-  showLayout: function(){
-    this.layout = new kendo.Layout("gallery-layout-template");
-    this.layout.render("body")
-  },
+    addImage: function(){
+      var addImageView = ImageGallery.AddEdit.getAddImageView();
+      galleryLayout.showContent(addImageView);
+    },
 
-  showImageList: function(){
-    var imageListView = ImageGallery.ImageList.getImageListView();
-    this.layout.showIn("#image-list", imageListView);
-  }
+    editImageById: function(id){
+      this._getById(id, function(image){
+        var editImageView = ImageGallery.AddEdit.getEditImageView(image);
+        galleryLayout.showContent(editImageView);
+      });
+    },
 
-};
+    showImageById: function(id){
+      this._getById(id, function(image){
+        var showImageView = ImageGallery.ImageViewer.getImageView(image);
+        galleryLayout.showContent(showImageView);
+      });
+    },
+
+    showImageList: function(){
+      var imageListView = ImageGallery.ImageList.getImageListView();
+      galleryLayout.showList(imageListView);
+    },
+
+    _getById: function(id, callback){
+      var image = this.imageSource.get(id);
+      galleryLayout.set("selectedImageId", id);
+
+      if (image){
+        callback.call(this, image);
+      }
+    }
+  };
+
+  return Controller;
+})();
