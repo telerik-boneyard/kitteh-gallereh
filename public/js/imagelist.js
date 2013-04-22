@@ -10,9 +10,9 @@ ImageGallery.ImageList = (function(){
     },
 
     imageClicked: function(e){
-      var index = e.sender.select().index();
-      var item = this.imageSource.view()[index];
-      console.log(item);
+      e.preventDefault();
+      var id = $(e.currentTarget).data("id");
+      this.trigger("selected", id);
     },
 
     setImageSource: function(imageDataSource){
@@ -27,6 +27,7 @@ ImageGallery.ImageList = (function(){
   var ImageList = {
     init: function(imageDataSource){
       images.setImageSource(imageDataSource);
+      images.bind("selected", this.imageSelected.bind(this));
     },
 
     getImageListView: function(){
@@ -34,6 +35,10 @@ ImageGallery.ImageList = (function(){
         tagName: "ul",
         model: images
       });
+    },
+
+    imageSelected: function(id){
+      ImageGallery.Router.navigate("/images/" + id);
     }
   };
 

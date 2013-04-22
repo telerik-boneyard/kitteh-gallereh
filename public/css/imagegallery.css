@@ -49,6 +49,11 @@ ul.nav {
   text-align: center;
 }
 
+#image-list img .k-state-selected {
+  border: 5px solid #fff;
+  padding: 0px;
+}
+
 #image-list img {
   border: 0px;
   padding: 5px;
@@ -290,4 +295,3 @@ footer a, footer a:hover {
   float: left;
   padding-right: 5px;
 }
-

@@ -34,10 +34,12 @@ ImageGallery.Controller = (function(){
     },
 
     showImageById: function(id){
-      this._getById(id, function(image){
-        var showImageView = ImageGallery.ImageViewer.getImageView(image);
-        this.layout.showIn("#main", showImageView);
-      });
+      this._getById(id, this.showImage);
+    },
+
+    showImage: function(image){
+      var showImageView = ImageGallery.ImageViewer.getImageView(image);
+      this.layout.showIn("#main", showImageView);
     },
 
     showLayout: function(){

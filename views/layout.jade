@@ -20,10 +20,11 @@ html
 
     script#image-listview-template(type="text/x-kendo-template")
       .scrollable(data-bind="style: {width: scrollingSize}")
-        div(data-role="listview", data-bind="source: imageSource, events: {change: imageClicked}", data-selectable="true", data-template="image-preview-template")
+        div(data-role="listview", data-bind="source: imageSource", data-template="image-preview-template")
 
     script#image-preview-template(type='text/x-kendo-template')
-      img(src!='#= url #', width='150', height='100', alt!='#= name #: #= description #')
+      a(href="##", data-id="#= id #", data-bind="click: imageClicked")
+        img(src!='#= url #', width='150', height='100', alt!='#= name #: #= description #')
 
     script#image-view-template(type='text/x-kendo-template')
       .image-view
