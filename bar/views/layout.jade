@@ -1,0 +1,49 @@
+doctype 5
+html
+  head
+    title Kitteh Gallereh :: Kendo UI SPA Sample
+
+    link(rel='stylesheet', href='/css/bootstrap.css', type='text/css')
+    link(rel='stylesheet', href='/css/imagegallery.css', type='text/css')
+
+    script(src='/js/vendor/json2.js')
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/underscore.js')
+    script(src='/js/vendor/kendo.all.min.js')
+
+    script(src='/js/imagegallery.js')
+
+    include templates.html
+
+  body
+header.navbar.navbar-static-top
+  .navbar-inner
+      .container
+        .brand
+          a(href='http://kendoui.com')
+            img(src='/img/kendo-logo.png', width='150')
+          | &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href='/') Kitteh Gallereh
+        ul.nav
+          li
+            a(href='#/images/new')
+              i.icon-plus
+              | Add Kitteh
+section.content-container
+  .row.image-list-container
+    .image-list-background
+      .container
+        #image-list
+          ul
+            li &nbsp;
+  .container
+    .row#main-container
+      article#main.span12.content-row
+footer
+  .container
+    .row
+      .span12.pull-right
+        p
+          | Kitteh Gallereh, Copyright © 2013
+          a(href='http://telerik.com') Telerik
+

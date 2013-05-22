@@ -1,0 +1,16 @@
+<script type="text/x-kendoui-template" id="kitteh-view-template">
+  <img data-bind="attr: {src: url}">
+</script>
+
+<script type="text/x-kendoui-template" id="kitteh-list-template">
+  <div 
+    data-role="listview"
+    data-template="kitteh-list-item-template"
+    data-selectable="single"
+    data-bind="source: imageDataSource, events: {change: imageClicked}"
+  ></div>
+</script>
+
+<script type="text/x-kendoui-template" id="kitteh-list-item-template">
+  <img data-bind="attr: {src: url}" width="150">
+</script>
