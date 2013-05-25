@@ -3,6 +3,12 @@
       <h1>Add Kitteh</h1>
       <form class="form-horizontal">
         <div class="control-group">
+          <label for="name" class="control-label">Image Name: </label>
+          <div class="controls">
+            <input id="name" type="text" name="name" data-bind="value: name">
+          </div>
+        </div>
+        <div class="control-group">
           <label for="image-url" class="control-label">Image Url: </label>
           <div class="controls">
             <input id="url" type="text" name="url" placeholder="http://placekitten.com/300/200" data-bind="value:url">
@@ -15,20 +21,9 @@
           </div>
         </div>
         <div class="control-group">
-          <label for="name" class="control-label">Image Name: </label>
           <div class="controls">
-            <input id="name" type="text" name="name" data-bind="value: name">
-          </div>
-        </div>
-        <div class="control-group">
-          <label for="description" class="control-label">Description: </label>
-          <div class="controls">
-            <textarea id="description" name="description" data-bind="value: description"></textarea>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-            <button id="save" type="submit" name="Save" value="Save" data-bind="click: addImage" class="btn btn-primary"> <i class="icon-ok-sign icon-white"></i>&nbsp;Save</button><a id="cancel" href="#" data-bind="click: cancel" class="btn btn-link"> <i class="icon-ban-circle"></i>&nbsp;cancel</a>
+            <button id="save" type="submit" name="Save" value="Save" data-bind="click: saveClicked" class="btn btn-primary">&nbsp;<i class="icon-ok-sign icon-white"></i>Save</button>
+            <a id="cancel" href="#" data-bind="click: cancel" class="btn btn-link"> <i class="icon-ban-circle"></i>&nbsp;cancel</a>
           </div>
         </div>
       </form>

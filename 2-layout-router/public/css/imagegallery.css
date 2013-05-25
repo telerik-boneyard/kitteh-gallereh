@@ -31,7 +31,7 @@ ul.nav {
   background-image: url("/img/flowers.png");
 }
 
-#image-list ul{
+#image-list div:first-of-type{
   text-align: left;
   float: none;
   list-style: none;
@@ -42,15 +42,6 @@ ul.nav {
   overflow-y: hidden;
   height: 125px;
   white-space: no-wrap;
-}
-
-#image-list ul li{
-  display: inline-block;
-  padding-bottom: 10px
-}
-
-#image-list ul li a{
-  text-align: center;
 }
 
 #image-list img .k-state-selected {
