@@ -4,12 +4,12 @@ $(function(){
     url: "http://placekitten.com/300/200",
 
     imageDataSource: new kendo.data.DataSource({
-      transport: {
-        read: {
-          url: "/images",
-          dataType: "JSON"
-        }
-      }
+      data: [
+        {name: "kitteh", url: "http://placekitten.com/300/200"},
+        {name: "nuther kitteh", url: "http://placekitten.com/301/200"},
+        {name: "cutezee", url: "http://placekitten.com/300/201"},
+        {name: "fuzzeh", url: "http://placekitten.com/301/201"}
+      ]
     }),
 
     imageClicked: function(e){
