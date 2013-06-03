@@ -3,14 +3,90 @@
 </script>
 
 <script type="text/x-kendoui-template" id="kitteh-list-template">
-  <div 
-    data-role="listview"
-    data-template="kitteh-list-item-template"
-    data-selectable="single"
-    data-bind="source: imageDataSource, events: {change: imageClicked}"
-  ></div>
+  <div class="scrollable" data-bind="style: {width: scrollingSize}">
+    <div 
+      data-role="listview"
+      data-template="kitteh-list-item-template"
+      data-selectable="single"
+      data-bind="source: imageDataSource, events: {change: imageClicked}"
+    ></div>
+  </div>
 </script>
 
 <script type="text/x-kendoui-template" id="kitteh-list-item-template">
   <img data-bind="attr: {src: url}" width="150">
 </script>
+
+<script type="text/x-kendoui-template" id="add-image-form-template">
+  <div class="row">
+    <div class="span7 offset2">
+      <h1>Add Kitteh</h1>
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label for="name" class="control-label">Image Name: </label>
+          <div class="controls">
+            <input id="name" type="text" name="name" data-bind="value: name">
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="image-url" class="control-label">Image Url: </label>
+          <div class="controls">
+            <input id="url" type="text" name="url" placeholder="http://placekitten.com/300/200" data-bind="value:url">
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="preview" class="control-label">Preview: </label>
+          <div class="controls">
+            <div id="image-preview"><img id="preview" data-bind="attr:{src: url}, visible: url"></div>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button id="save" type="submit" name="Save" value="Save" data-bind="click: saveClicked" class="btn btn-primary">&nbsp;<i class="icon-ok-sign icon-white"></i>Save</button>
+            <a id="cancel" href="#" data-bind="click: cancel" class="btn btn-link"> <i class="icon-ban-circle"></i>&nbsp;cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-kendoui-template" id="kitteh-gallereh-layout-template">
+  <header class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="brand"><a href="http://kendoui.com"><img src="/img/kendo-logo.png" width="150"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">Kitteh Gallereh</a></div>
+        <ul class="nav">
+          <li><a href="#" data-bind="click: addClicked"><i class="icon-plus"></i>Add Kitteh</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="content-container">
+    <div class="row image-list-container">
+      <div class="image-list-background">
+        <div class="container">
+          <div id="image-list">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="main-container" class="row">
+        <article id="main" class="span12 content-row"></article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="span12 pull-right">
+          <p>Kitteh Gallereh, Copyright © 2013<a href="http://telerik.com">Telerik</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</script>
+
