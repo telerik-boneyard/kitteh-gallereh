@@ -8,8 +8,8 @@
   },
 
   "dependencies": {
-    "express": "*",
-    "jade": "*"
+    "express": "3.x",
+    "jade": "0.28.x"
   },
 
   "engines": {
